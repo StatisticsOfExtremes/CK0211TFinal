@@ -1,27 +1,8 @@
-import getCadastro
 import getAnimais
 import getAdocao
-from os import system as sys
-
-welcomeStr = """
-   _____ _  _____    _____          _   _______ 
-  / ____(_)/ ____|  / ____|   /\   | | |__   __|
- | (___  _| (___   | |  __   /  \  | |    | |   
-  \___ \| |\___ \  | | |_ | / /\ \ | |    | |   
-  ____) | |____) | | |__| |/ ____ \| |____| |   
- |_____/|_|_____/   \_____/_/    \_\______|_|   
-                                                                                             
-"""
-
-print(welcomeStr)
-
-def limparTela():
-        sys('cls||clear')
-
-def renderBackground():
-        limparTela()
-        print(welcomeStr)
-
+import getCandidato
+import os
+import globalOpt
 
 def getOptions():
         opcao = input("""
@@ -29,17 +10,17 @@ def getOptions():
         2 - Consultar animais
         3 - Adotar um animal
         """)
-        if opcao == 1:
-                renderBackground()
-                getCadastro()
+        if opcao == "1":
+                globalOpt.renderBackground()
+                getAnimais.opcoesMenuAnimais()
                 getOptions()
-        elif opcao == 2:
-                renderBackground() 
-                getAnimais()
+        elif opcao == "2":
+                globalOpt.renderBackground() 
+                getAnimais.listarAnimais()
                 getOptions()
-        elif opcao == 3:
-                renderBackground()
-                getAdocao()
+        elif opcao == "3":
+                globalOpt.renderBackground()
+                #getAdocao
                 getOptions()
             
 
