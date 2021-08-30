@@ -1,4 +1,4 @@
-from globalOpt import limparTela
+from globalOpt import limparTela, renderBackground
 
 def opcoesMenuCandidato():
     opcao = input("""
@@ -10,6 +10,7 @@ def opcoesMenuCandidato():
         limparTela()
         addCandidato()
     else:
+        renderBackground()
         return
 
 

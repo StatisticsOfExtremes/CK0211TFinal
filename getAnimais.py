@@ -1,5 +1,5 @@
 import time
-from globalOpt import limparTela
+from globalOpt import limparTela, renderBackground
 """
 Cada animal deve conter um registro informando o seu nome; a idade (em
 meses), o porte (pequeno, médio e grande); a raça (caso não houver será ‘sem
@@ -10,12 +10,14 @@ adoção” devem ficar vazios.
 
 """
 def addAnimal():
-    nomeAnimal = input("Nome do Animal: ")
-    idadeAnimal = int(input("Idade (em meses): "))
-    racaAnimal = input("Raça: ")
-    nomeLar = input("Lar temporário: ")
-    responsavel = input("Responsável (Caso não tenha, deixar em branco): ")
-    dataAdocao = input("Data da adoção(Caso não tenha, deixar em branco): ")
+    nomeAnimal = getData("Nome do Animal: ", 'str')
+    idadeAnimal = getData("Idade (em meses): ", 'int')
+    racaAnimal = getData("Raça: ", 'str')
+    nomeLar = getData("Lar temporário: ", 'str')
+    responsavel = getData("Responsável (Caso não tenha, deixar em branco): ", 'str')
+    dataAdocao = getData("Data da adoção(Caso não tenha, deixar em branco): ", 'str')
+
+    ##inserirAnimal(nomeAnimal, racaAnimal, nomeLar, responsavel, dataAdocao)
 
 
 def modAnimal():
@@ -35,7 +37,7 @@ def opcoesMenuAnimais():
     4 - Voltar para o menu anterior
     """)
     if opcao == "1":
-        limparTela()
+        renderBackground()
         addAnimal()
         opcoesMenuAnimais()
     elif opcao == "2":
@@ -51,4 +53,26 @@ def opcoesMenuAnimais():
         delAnimal()
         opcoesMenuAnimais()
     else:
+        renderBackground()
         return
+
+def getData(Texto, Esperado):
+    while True:
+        try:
+            if Esperado == "int":
+                valor = int(input(Texto))
+                break
+            elif Esperado == "str":
+                valor = input(Texto)
+                break
+            elif Esperado == "flt":
+                valor = float(input(Texto))
+                break
+        except ValueError:
+            print("O tipo do valor inserido não corresponde ao esperado, por favor tente novamente")
+        
+        except TypeError:
+            print("O tipo de valor inserido está incorreto")
+
+    return valor
+    

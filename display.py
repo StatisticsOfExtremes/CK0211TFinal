@@ -9,6 +9,7 @@ def getOptions():
         1 - Cadastrar novos animais
         2 - Consultar animais
         3 - Adotar um animal
+        4 - Sair
         """)
         if opcao == "1":
                 globalOpt.renderBackground()
@@ -22,12 +23,16 @@ def getOptions():
                 globalOpt.renderBackground()
                 #getAdocao
                 getOptions()
+        elif opcao == '4':
+                return False
             
 
 
 def main():
-    while True:
-        getOptions()
+        open = True
+        while open:
+              open = getOptions()
+              
 
 
 main()
